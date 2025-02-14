@@ -151,11 +151,12 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
     
     # Formatting Requirements:
     1. Number each question as "Question 1:", "Question 2:", etc.
-    2. Use the following answer format for both MCQ and Short Answer:
+    2. Do your best to identify which of the submitted standards best aligns with the question and add this after the question number. Example, "Question 1: 8.8D"
+    3. Use the following answer format for both MCQ and Short Answer:
        Answer: [Letter or numeric value] | Model Solution:
        • Step-by-step explanation
        • Final answer statement
-    3. Do not include any meta-commentary or extra text beyond the 10 questions and their solutions.
+    4. Do not include any meta-commentary or extra text beyond the 10 questions and their solutions.
     
     # Validation Checklist:
     1. Is the question solvable with the provided info?
@@ -179,7 +180,7 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
     Important: Generate all 10 questions at once. Do not include any introductory text, meta-commentary, or questions about continuing.
          
     3. Example Question Format for Multiple Choice:
-       Question 1: 
+       Question 1: 8.8D
        [Visual Description: Coordinate grid showing triangle ABC with vertices at (2,3), (4,8), and (6,2)]
        Triangle ABC has angle measures of 65° and 45°. What is the measure of the third angle?
        A) 60°
