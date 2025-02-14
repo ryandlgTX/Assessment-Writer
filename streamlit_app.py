@@ -116,8 +116,13 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
     # Construct prompt without displaying the reference material to users
     user_content = f"""
     # CONTEXT #
-    You are creating questions for the {grade} mathematics assessment. Generate exactly 10 questions matching these specific requirements:
-
+    You are creating questions for the {grade} mathematics assessment. Generate exactly 10 questions (5 multiple choice and 5 short answer) matching these specific requirements:
+    
+    # INITIAL RESEARCH # 
+    a. Review the narrative, goals, lessons, and standards to understand the content. Write a summary of your understanding.
+    b. Create a list of skills needed for success in this section.
+    c. For each skill, write a description of how it connects to the section content.
+    
     # FORMATTING REQUIREMENTS #
     1. Question Format:
        - Number questions as "Question 1:", "Question 2:", etc.
@@ -125,6 +130,7 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
        - Each multiple choice option should start on a new line
        
     2. Visual Descriptions:
+       - Only add visual descriptions when it is appropriate for the question being asked
        - Place all visual descriptions in [brackets]
        - Include precise mathematical details, for example:
          [Visual: Triangle ABC drawn on coordinate grid with vertices at A(2,3), B(4,8), C(6,2)]
@@ -169,8 +175,9 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
 
     Important: Generate all 10 questions at once. Do not include any introductory text, meta-commentary, or questions about continuing.
          
-    3. Example Question Format:
-       Question 1: [Visual Description: Coordinate grid showing triangle ABC with vertices at (2,3), (4,8), and (6,2)]
+    3. Example Question Format for Multiple Chocie:
+       Question 1: 
+       [Visual Description: Coordinate grid showing triangle ABC with vertices at (2,3), (4,8), and (6,2)]
        Triangle ABC has angle measures of 65° and 45°. What is the measure of the third angle?
        A) 60°
        B) 70°
@@ -182,19 +189,6 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
        • 180° - 110° = 70°
        Therefore, the third angle measures 70°
 
-    # REFERENCE FORMAT #
-    Here are actual questions from the official {grade} assessment for content reference:
-
-    {reference_text}
-
-    # CONTENT TO ADDRESS #
-    Generate questions covering:
-    ***Learning Goals: {goals}
-    ***Standards: {standards}
-    ***Lesson Content: {lessons}
-    ***Section Narrative: {narrative}
-
-    Important: Generate all 10 questions at once. Do not include any introductory text, meta-commentary, or questions about continuing.
     """
     
     response = client.messages.create(
