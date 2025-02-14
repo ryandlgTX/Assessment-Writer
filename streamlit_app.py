@@ -116,50 +116,53 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
     # Construct prompt without displaying the reference material to users
     user_content = f"""
     # CONTEXT #
-    You are creating questions for the {grade} mathematics assessment. Generate exactly 10 questions (5 multiple choice and 5 short answer) matching these specific requirements:
-    
-    # INITIAL RESEARCH # 
-    a. Review the narrative, goals, lessons, and standards to understand the content. Write a summary of your understanding.
-    b. Create a list of skills needed for success in this section.
-    c. For each skill, write a description of how it connects to the section content.
-    
-    # FORMATTING REQUIREMENTS #
-    1. Question Format:
-       - Number questions as "Question 1:", "Question 2:", etc.
-       - Multiple choice options must ALWAYS use A, B, C, D (never F, G, H, J)
-       - Each multiple choice option should start on a new line
-       
-    2. Visual Descriptions:
-       - Only add visual descriptions when it is appropriate for the question being asked
-       - Place all visual descriptions in [brackets]
-       - Include precise mathematical details, for example:
-         [Visual: Triangle ABC drawn on coordinate grid with vertices at A(2,3), B(4,8), C(6,2)]
-         [Visual: Two parallel lines l and m intersected by transversal t, with angle 1 marked as 65°]
-         [Visual: Triangle PQR with point S on PQ and point T on PR, with ST parallel to QR. Given measures: PS = 3 units, PT = 9 units]
-       
-    3. Mathematical Accuracy Requirements:
-       For geometry questions:
-       - All geometric constructions must be mathematically possible
-       - Parallel lines must be clearly identified
-       - Given measures must be labeled on the diagram
-       - Similar triangles must maintain proportional relationships
-       - Angle measures must sum appropriately
-       - Coordinate points must create the described shapes
-       
-    4. Answer Format:
-       "Answer: [Letter] | Model Solution:" followed by:
-       - Bulleted solution steps
-       - Clear explanation
-       - Final answer statement
+    You are creating a set of mathematics assessment items for {grade}.
 
-    # VISUAL VALIDATION CHECKLIST #
-    Before finalizing each question, verify:
-    1. Are all given measurements mathematically possible?
-    2. Do the described geometric relationships make sense?
-    3. Are parallel and perpendicular relationships clearly indicated?
-    4. Are all necessary measurements labeled?
-    5. Would the described figure help students understand the problem?
-    6. Does the visual match standard mathematical representations?
+    # Content Hierarchy (in order of priority):
+    1. Narrative and Lesson Goals
+    2. Goals
+    3. Standards
+
+    # Preliminary Steps:
+    1. Review the Narrative, Lesson Goals, Goals, and Standards.
+    2. Write a summary of how the Narrative and Lesson Goals drive the section’s key ideas
+       and how they connect to the Goals and Standards. (Store this as {OVERVIEW})
+    3. From the Narrative and Lesson Goals, write a list of skills needed. (Store this as {SKILLS})
+       - Show how each skill helps learners meet the Goals and Standards.
+
+    # Question Creation Guidelines:
+    - Generate exactly 10 questions:
+      - 5 Multiple Choice (MCQ) questions.
+      - 5 Short Answer questions.
+    - Ensure each question is solvable with the information provided.
+    - Each question must reflect the Narrative and Lesson Goals first, then align with the Goals, and finally comply with the Standards.
+
+    ## Multiple Choice Questions
+    - Provide four answer options labeled A, B, C, D.
+    - Each option should appear on its own line.
+    
+    ## Short Answer Questions
+    - Require a clear step-by-step solution leading to a concise final answer.
+    
+    ## Visual Descriptions (if needed)
+    - Place all visual descriptions in square brackets: [Visual: ...].
+    - Include enough detail (coordinates, measures, etc.) so the problem is solvable.
+    - Verify geometric or diagram-based details for mathematical consistency (e.g., parallel lines, angle sums, correct coordinates).
+    
+    # Formatting Requirements:
+    1. Number each question as "Question 1:", "Question 2:", etc.
+    2. Use the following answer format for both MCQ and Short Answer:
+       Answer: [Letter or numeric value] | Model Solution:
+       • Step-by-step explanation
+       • Final answer statement
+    3. Do not include any meta-commentary or extra text beyond the 10 questions and their solutions.
+    
+    # Validation Checklist:
+    1. Is the question solvable with the provided info?
+    2. Does it reflect the Narrative and Lesson Goals first, then the Goals, then the Standards?
+    3. Are visual or geometric details valid (correct angle sums, labeled measurements, etc.)?
+    4. Is any diagram or measurement consistent and clearly labeled?
+    5. Is there no missing or extraneous information?
 
     # REFERENCE FORMAT #
     Here are actual questions from the official {grade} assessment for content reference:
@@ -175,7 +178,7 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
 
     Important: Generate all 10 questions at once. Do not include any introductory text, meta-commentary, or questions about continuing.
          
-    3. Example Question Format for Multiple Chocie:
+    3. Example Question Format for Multiple Choice:
        Question 1: 
        [Visual Description: Coordinate grid showing triangle ABC with vertices at (2,3), (4,8), and (6,2)]
        Triangle ABC has angle measures of 65° and 45°. What is the measure of the third angle?
