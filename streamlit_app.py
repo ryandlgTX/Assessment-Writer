@@ -209,7 +209,11 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
 
 # Streamlit UI
 st.title("Mathematics Assessment Generator")
-st.subheader("Generate structured practice questions with rationales")
+st.subheader("Generate structured assessment items with rationales")
+st.markdown("""
+For samples and more information on how to collect the data needed for this tool, 
+check out this [Help Page](https://docs.google.com/document/d/1S9gjx4meZiUfDb-b_W1Ca2yKjYirsjpZKpmbUJ5lMmw/edit?tab=t.0#heading=h.pjv2hotkik9a).
+""")
 
 # Grade Level Selection
 grade = st.selectbox("Grade Level:", 
