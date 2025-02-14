@@ -211,7 +211,7 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
 st.title("Mathematics Assessment Generator")
 st.subheader("Generate structured assessment items with rationales")
 st.markdown("""
-For samples and more information on how to collect the data needed for this tool, 
+For samples and more information on how to collect the data for this tool, 
 check out this [Help Page](https://docs.google.com/document/d/1S9gjx4meZiUfDb-b_W1Ca2yKjYirsjpZKpmbUJ5lMmw/edit?tab=t.0#heading=h.pjv2hotkik9a).
 """)
 
