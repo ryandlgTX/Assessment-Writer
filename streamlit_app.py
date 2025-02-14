@@ -126,8 +126,8 @@ def get_response(grade: str, narrative: str, goals: str, standards: str, lessons
     # Preliminary Steps:
     1. Review the Narrative, Lesson Goals, Goals, and Standards.
     2. Write a summary of how the Narrative and Lesson Goals drive the section’s key ideas
-       and how they connect to the Goals and Standards. (Store this as {OVERVIEW})
-    3. From the Narrative and Lesson Goals, write a list of skills needed. (Store this as {SKILLS})
+       and how they connect to the Goals and Standards. 
+    3. From the Narrative and Lesson Goals, write a list of skills needed. 
        - Show how each skill helps learners meet the Goals and Standards.
 
     # Question Creation Guidelines:
