@@ -3,3 +3,4 @@ anthropic
 python-dotenv
 openai
 PyPDF2
+pypdf
